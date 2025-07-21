@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瞎掰王 (Guess the Bluffer)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+
+        <div id="start-screen" class="screen">
+            <h1>瞎掰王</h1>
+            <p>一個考驗口才與心機的派對遊戲！</p>
+            <div class="input-group">
+                <label for="num-players">玩家人數 (至少3人)：</label>
+                <input type="number" id="num-players" min="3" value="4">
+            </div>
+            <div id="player-names-input-group" class="input-group">
+                <h3>自訂玩家暱稱：</h3>
+                <div id="player-names-container">
+                    </div>
+            </div>
+            <div class="input-group">
+                <label for="difficulty-select">題目難度：</label>
+                <select id="difficulty-select">
+                    <option value="1">一顆星 (簡單)</option>
+                    <option value="2">兩顆星 (普通)</option>
+                    <option value="3">三顆星 (困難)</option>
+                </select>
+            </div>
+            <button id="start-game-btn">開始遊戲</button>
+        </div>
+
+        <div id="role-reveal-screen" class="screen" style="display: none;">
+            <h1><span id="player-nickname-reveal"></span>，您的身份是：<span id="role-text"></span></h1>
+            <h2>本輪題目：<span id="topic-text"></span></h2>
+            <p id="topic-explanation-text" style="display: none;"></p>
+            <p>剩餘時間：<span id="timer-display">10</span> 秒</p>
+            </div>
+
+        <div id="buffer-screen" class="screen" style="display: none;">
+            <h2>手機傳遞中...</h2>
+            <p>請將手機傳給 <span id="next-player-name"></span></p>
+            <button id="i-am-next-btn">我是下一個人</button>
+            <button id="i-am-thinker-btn" style="display: none;">我是想想</button> </div>
+
+        <div id="thinking-screen" class="screen" style="display: none;">
+            <h1>想想的判斷時間</h1>
+            <h2>本輪題目：<span id="current-topic-display"></span></h2>
+            
+            <h3>1. 使用「公三小」卡 (可選，選一位你最想質疑的玩家)：</h3>
+            <div id="thinker-question-list">
+                </div>
+
+            <h3>2. 猜測誰是老實人 (必選一位)：</h3>
+            <div id="thinker-guess-list">
+                </div>
+            <button id="submit-thinker-choices-btn">提交判斷</button>
+        </div>
+
+        <div id="results-screen" class="screen" style="display: none;">
+            <h1>本輪結果揭曉！</h1>
+            <h2>題目：<span id="results-topic-text"></span></h2>
+            <p>正確解釋：<span id="results-explanation-text"></span></p>
+
+            <h3>玩家身份：</h3>
+            <ul id="results-roles-list">
+                </ul>
+
+            <h3>當前分數：</h3>
+            <ul id="results-scores-list">
+                </ul>
+
+            <button id="next-round-btn">下一輪</button>
+            <button id="end-game-btn">結束遊戲</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
